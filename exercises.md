@@ -15,11 +15,11 @@ Gọi `call_openai` với temperature 0.0, 0.5, 1.0 và 1.5 dùng prompt
 **"Hãy kể cho tôi một sự thật thú vị về Việt Nam."**
 
 **Bạn nhận thấy quy luật gì qua bốn phản hồi?** (2–3 câu)
-> *Câu trả lời của bạn*
+> *Temperature càng thấp thì câu trả lời càng ổn định*
 
 ### Câu 1.2 — Chọn temperature cho sản phẩm
 **Bạn sẽ đặt temperature bao nhiêu cho chatbot hỗ trợ khách hàng, và tại sao?**
-> *Câu trả lời của bạn*
+> *Tôi sẽ đặt 0.2-0.4. Mức này sẽ giúp câu trả lời chính xác*
 
 ### Câu 1.3 — Đánh đổi chi phí
 Kịch bản: 10.000 người dùng hoạt động mỗi ngày, mỗi người gọi API 3 lần,
@@ -27,7 +27,7 @@ mỗi lần trung bình ~350 token đầu ra.
 
 **Ước tính GPT-4o đắt hơn GPT-4o-mini bao nhiêu lần cho workload này? Nêu một
 trường hợp GPT-4o xứng đáng với chi phí và một trường hợp nên dùng mini:**
-> *Câu trả lời của bạn*
+> *10000 x 3 x 350 = 10500000 token mỗi ngày. Giá hàng ngày của GPT4o là $105/ngày, GPT4omini là $6.3/ngày. GPT4o đắt hơn GPT4omini khoảng 16.7 lần*
 
 ---
 
@@ -41,7 +41,7 @@ Gọi `chat_with_system_prompt` hai lần với cùng câu hỏi
 
 **Hai phản hồi khác nhau như thế nào (độ dài, từ vựng, ví dụ)? System prompt
 ảnh hưởng đến hành vi model ra sao?** (3–4 câu)
-> *Câu trả lời của bạn*
+> *Phản hồi khi là giáo viên tiểu học sẽ ngắn gọn, đơn giản, gần gũi hơn phản hồi của chuyên gia tài chính. System prompt định hướng vai trò, giọng điệu, mức độ chi tiết của câu trả lời cho cùng 1 câu hỏi*
 
 ### Câu 2.2 — tiktoken vs đếm từ
 Chọn một đoạn văn tiếng Việt ~100 từ. So sánh số token theo `count_tokens`
@@ -58,13 +58,13 @@ nhiều token hơn tiếng Anh cùng độ dài?**
 ### Câu 3.1 — Trải nghiệm người dùng với streaming
 **Streaming quan trọng nhất trong trường hợp nào, và khi nào thì
 non-streaming lại phù hợp hơn?** (1 đoạn văn)
-> *Câu trả lời của bạn*
+> *Streaming quan trọng nhất với câu trả lời dài hoặc cần phản hồi tức thì. Non-streaming phù hợp khi chỉ cần kết quả hoàn chỉnh để xử lí tiếp*
 
 ### Câu 3.2 — Vì sao backoff theo cấp số nhân?
 **So với delay cố định (ví dụ luôn chờ 1 giây), exponential backoff có lợi
 thế gì khi API bị quá tải? Điều gì xảy ra nếu hàng nghìn client cùng retry
 với delay cố định giống nhau?**
-> *Câu trả lời của bạn*
+> *Tăng dần thời gian chờ sau mỗi lần lỗi, giúp giảm áp lực lên API đang quá tải và tạo thời gian để dịch vụ phục hồi*
 
 ---
 
